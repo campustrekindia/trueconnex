@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueConnex | Verify Membership</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            base: '#FFF0F5',
+                            glass: 'rgba(255, 255, 255, 0.4)',
+                            primary: '#E11D48',
+                            secondary: '#DB2777',
+                            accent: '#F472B6',
+                            text: '#881337',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fce7f3 100%);
+            min-height: 100vh;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(225, 29, 72, 0.05);
+        }
+        .input-glass {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(225, 29, 72, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-text flex items-center justify-center min-h-screen p-4">
+
+    <div class="glass-panel rounded-2xl w-full max-w-md p-8 shadow-2xl relative">
+        <a href="events.html" class="absolute top-4 left-4 text-rose-400 hover:text-rose-600">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+
+        <div class="text-center mb-8 mt-4">
+            <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4 text-rose-500 text-2xl">
+                <i class="fa-solid fa-key"></i>
+            </div>
+            <h2 class="text-3xl font-serif text-rose-950 mb-2">Member Verification</h2>
+            <p class="text-sm text-rose-800/70">Enter the code received after your Razorpay payment.</p>
+        </div>
+
+        <form onsubmit="verifyMember(event)" class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">Mobile Number</label>
+                <input type="tel" id="mobile" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="9876543210" required>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">Member Code</label>
+                <input type="text" id="code" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="TC-XXXX" required>
+            </div>
+
+            <button type="submit" id="verifyBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 hover:-translate-y-1 transition-all">
+                Verify & Unlock Events
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <p class="text-xs text-rose-400">Don't have a code?</p>
+            <a href="membership.html" class="text-sm font-bold text-rose-600 hover:underline">Get Membership Here</a>
+        </div>
+    </div>
+
+    <script>
+        function verifyMember(e) {
+            e.preventDefault();
+            const btn = document.getElementById('verifyBtn');
+            const mobile = document.getElementById('mobile').value;
+            const code = document.getElementById('code').value;
+
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Verifying...';
+            
+            // Retrieve local user data for demo purposes
+            const storedUser = JSON.parse(localStorage.getItem('trueconnexUser'));
+
+            setTimeout(() => {
+                let isValid = false;
+
+                // 1. Check Demo LocalStorage
+                if (storedUser && storedUser.phone === mobile && storedUser.code === code) {
+                    isValid = true;
+                } 
+                // 2. Hardcoded Fallback for testing
+                else if (code.startsWith("TC-") && code.length > 5) {
+                    isValid = true;
+                }
+
+                if (isValid) {
+                    // Set a session flag to keep events unlocked
+                    sessionStorage.setItem('eventsUnlocked', 'true');
+                    
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Success!';
+                    btn.classList.replace('from-rose-500', 'from-green-500');
+                    btn.classList.replace('to-pink-600', 'to-green-600');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'events.html';
+                    }, 1000);
+                } else {
+                    alert("Invalid Credentials. Please check the code sent to your email/phone.");
+                    btn.innerHTML = 'Verify & Unlock Events';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

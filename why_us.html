@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueConnex | Why Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Outfit"', 'sans-serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            base: '#FFF0F5',
+                            glass: 'rgba(255, 255, 255, 0.4)',
+                            primary: '#E11D48',
+                            secondary: '#DB2777',
+                            accent: '#F472B6',
+                            text: '#881337',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'glow': '0 0 20px rgba(225, 29, 72, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fce7f3 100%);
+            min-height: 100vh;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(225, 29, 72, 0.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-text">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <span class="text-2xl font-serif font-bold tracking-tight text-rose-900">TrueConnex</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="events.html" class="text-rose-800/70 hover:text-rose-600 font-medium transition-colors">Exclusive Events</a>
+                    <a href="why_us.html" class="text-rose-600 font-medium transition-colors">Why Us</a>
+                    <a href="membership.html" class="text-rose-800/70 hover:text-rose-600 font-medium transition-colors">Membership</a>
+                </div>
+                <a href="membership.html" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-medium hover:shadow-lg hover:shadow-pink-500/40 transition-all transform hover:-translate-y-0.5 text-sm">
+                    Join Waitlist
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h1 class="text-4xl md:text-5xl font-serif text-rose-950 mb-6">The TrueConnex Difference</h1>
+                <p class="text-xl text-rose-800/70">
+                    We replaced algorithms with chemistry and safety with certainty. Here is how we protect your heart.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="glass-panel p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-20 h-20 mx-auto bg-white/50 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                        <i class="fa-solid fa-user-shield text-3xl text-rose-500"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Human Verification</h3>
+                    <p class="text-rose-800/60 leading-relaxed">
+                        No bots. No catfish. A real human verifies every ID and social profile before approval. We reject 30% of applicants.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-panel p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-20 h-20 mx-auto bg-white/50 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                        <i class="fa-solid fa-gem text-3xl text-rose-500"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Curated Events</h3>
+                    <p class="text-rose-800/60 leading-relaxed">
+                        Chemistry doesn't happen in a chat box. It happens over wine tasting, pottery classes, and stargazing mixers.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-panel p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-20 h-20 mx-auto bg-white/50 rounded-full flex items-center justify-center mb-6 shadow-sm">
+                        <i class="fa-solid fa-hand-holding-heart text-3xl text-rose-500"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-4">Intentional Dating</h3>
+                    <p class="text-rose-800/60 leading-relaxed">
+                        The membership fee acts as a filter. Everyone here is invested (literally) in finding a genuine connection.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Visual Break -->
+            <div class="mt-20 glass-panel rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <h2 class="text-3xl font-serif font-bold mb-4">Safety First, Romance Always.</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-rose-500 bg-white/50 p-1 rounded-full text-xs"></i>
+                            <span class="text-rose-900">Background checks for all premium members</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-rose-500 bg-white/50 p-1 rounded-full text-xs"></i>
+                            <span class="text-rose-900">24/7 dedicated support team</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-check text-rose-500 bg-white/50 p-1 rounded-full text-xs"></i>
+                            <span class="text-rose-900">Zero tolerance for harassment</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex-1">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="rounded-2xl shadow-lg border-4 border-white/40">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
