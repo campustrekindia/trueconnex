@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueConnex | Membership</title>
+    <title>TrueConnex | Verify Membership</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
@@ -24,10 +24,6 @@
                             accent: '#F472B6',
                             text: '#881337',
                         }
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-                        'glow': '0 0 20px rgba(225, 29, 72, 0.3)',
                     }
                 }
             }
@@ -38,168 +34,94 @@
             background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fce7f3 100%);
             min-height: 100vh;
         }
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-        }
         .glass-panel {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 8px 32px 0 rgba(225, 29, 72, 0.05);
         }
         .input-glass {
             background: rgba(255, 255, 255, 0.5);
             border: 1px solid rgba(225, 29, 72, 0.2);
-            backdrop-filter: blur(4px);
         }
     </style>
 </head>
-<body class="font-sans text-brand-text">
+<body class="font-sans text-brand-text flex items-center justify-center min-h-screen p-4">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-pink-500/30 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <span class="text-2xl font-serif font-bold tracking-tight text-rose-900">TrueConnex</span>
-                </a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="events.html" class="text-rose-800/70 hover:text-rose-600 font-medium transition-colors">Exclusive Events</a>
-                    <a href="why_us.html" class="text-rose-800/70 hover:text-rose-600 font-medium transition-colors">Why Us</a>
-                    <a href="membership.html" class="text-rose-600 font-medium transition-colors">Membership</a>
-                </div>
-                <a href="membership.html" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-medium hover:shadow-lg hover:shadow-pink-500/40 transition-all transform hover:-translate-y-0.5 text-sm">
-                    Join Waitlist
-                </a>
+    <div class="glass-panel rounded-2xl w-full max-w-md p-8 shadow-2xl relative">
+        <a href="events.html" class="absolute top-4 left-4 text-rose-400 hover:text-rose-600">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </a>
+
+        <div class="text-center mb-8 mt-4">
+            <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4 text-rose-500 text-2xl">
+                <i class="fa-solid fa-key"></i>
             </div>
+            <h2 class="text-3xl font-serif text-rose-950 mb-2">Member Verification</h2>
+            <p class="text-sm text-rose-800/70">Enter the code received after your Razorpay payment.</p>
         </div>
-    </nav>
 
-    <div class="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="glass-panel rounded-[2.5rem] p-8 md:p-12 shadow-2xl border-white/80">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-serif text-rose-950 mb-3">Join The Inner Circle</h2>
-                <p class="text-rose-800/70">
-                    Registration Fee: <span class="font-bold text-rose-600 text-xl">₹2,499</span> (Lifetime)
-                </p>
-                <p class="text-xs text-rose-500 mt-2">
-                    <i class="fa-solid fa-lock"></i> Paying securely joins you to our priority waitlist.
-                </p>
+        <form onsubmit="verifyMember(event)" class="space-y-5">
+            <div>
+                <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">Mobile Number</label>
+                <input type="tel" id="mobile" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="9876543210" required>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">Member Code</label>
+                <input type="text" id="code" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="TC-XXXX" required>
             </div>
 
-            <form 
-                id="registrationForm"
-                action="https://formspree.io/f/mqedqjjw" 
-                method="POST" 
-                class="max-w-xl mx-auto space-y-5" 
-                onsubmit="handleRegistration(event)"
-            >
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">First Name</label>
-                        <input type="text" id="firstName" name="firstName" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 placeholder-rose-300 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="Jane" required>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 placeholder-rose-300 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="Doe" required>
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">Email Address</label>
-                    <input type="email" id="email" name="email" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 placeholder-rose-300 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="love@example.com" required>
-                </div>
+            <button type="submit" id="verifyBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 hover:-translate-y-1 transition-all">
+                Verify & Unlock Events
+            </button>
+        </form>
 
-                <div>
-                    <label class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-2">Mobile Number</label>
-                    <input type="tel" id="mobileInput" name="phone" class="w-full input-glass rounded-xl px-4 py-3 text-rose-900 placeholder-rose-300 outline-none focus:ring-2 focus:ring-rose-500/50" placeholder="9876543210" pattern="[0-9]{10}" title="Please enter a valid 10-digit mobile number" required>
-                    <p class="text-[10px] text-rose-400 mt-1 italic">*Required for event access verification</p>
-                </div>
-
-                <div class="bg-white/40 p-4 rounded-xl border border-rose-100 flex items-start gap-3">
-                    <div class="mt-1 text-rose-500"><i class="fa-solid fa-shield-heart"></i></div>
-                    <div class="text-xs text-rose-800/80 leading-relaxed">
-                        <strong>Safety Pledge:</strong> I confirm I am seeking a genuine connection. I understand that my profile will be manually verified before I can message others.
-                    </div>
-                </div>
-
-                <input type="hidden" name="status" value="Payment Pending">
-
-                <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
-                    <span>Submit & Pay ₹2,499</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <div class="text-center text-[10px] text-rose-400">
-                    Registration data is securely sent before payment.
-                </div>
-            </form>
+        <div class="mt-6 text-center">
+            <p class="text-xs text-rose-400">Don't have a code?</p>
+            <a href="https://rzp.io/rzp/kJrq5La" class="text-sm font-bold text-rose-600 hover:underline">Get Membership Here</a>
         </div>
     </div>
 
     <script>
-        async function handleRegistration(event) {
-            event.preventDefault();
+        function verifyMember(e) {
+            e.preventDefault();
+            const btn = document.getElementById('verifyBtn');
+            const mobile = document.getElementById('mobile').value;
+            const code = document.getElementById('code').value;
 
-            const form = document.getElementById('registrationForm');
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Verifying...';
+            
+            // Retrieve local user data for demo purposes
+            const storedUser = JSON.parse(localStorage.getItem('trueconnexUser'));
 
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const mobile = document.getElementById('mobileInput').value;
-            const email = document.getElementById('email').value;
+            setTimeout(() => {
+                let isValid = false;
 
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Saving Details...';
-            btn.disabled = true;
-
-            try {
-                // 1. Submit Data to Formspree
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // 2. Generate Code locally for the Thank You page
-                    const code = 'TC-' + mobile.slice(-4);
-                    
-                    const userCredentials = {
-                        firstName: firstName,
-                        lastName: lastName,
-                        email: email,
-                        phone: mobile,
-                        code: code
-                    };
-                    localStorage.setItem('trueconnexUser', JSON.stringify(userCredentials));
-
-                    // 3. Redirect to the Payment Gateway Simulation
-                    window.location.href = 'payment.html';
-
-                } else {
-                    const data = await response.json();
-                    if (Object.hasOwn(data, 'errors')) {
-                        alert(data["errors"].map(error => error["message"]).join(", "));
-                    } else {
-                        alert("There was an issue submitting your registration. Please try again.");
-                    }
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
+                // 1. Check Demo LocalStorage
+                if (storedUser && storedUser.phone === mobile && storedUser.code === code) {
+                    isValid = true;
+                } 
+                // 2. Hardcoded Fallback for testing
+                else if (code.startsWith("TC-") && code.length > 5) {
+                    isValid = true;
                 }
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Network error. Please try again later.");
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
+
+                if (isValid) {
+                    // Set a session flag to keep events unlocked
+                    sessionStorage.setItem('eventsUnlocked', 'true');
+                    
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Success!';
+                    btn.classList.replace('from-rose-500', 'from-green-500');
+                    btn.classList.replace('to-pink-600', 'to-green-600');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'events.html';
+                    }, 1000);
+                } else {
+                    alert("Invalid Credentials. Please check the code sent to your email/phone.");
+                    btn.innerHTML = 'Verify & Unlock Events';
+                }
+            }, 1000);
         }
     </script>
 </body>
