@@ -159,10 +159,10 @@
                 </p>
             </div>
 
-            <!-- Responsive Grid: Horizontal cards on mobile, 3-column vertical cards on desktop -->
+            <!-- Responsive Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 
-                <!-- Live Trends (Replaced Safety Protocol) -->
+                <!-- Live Trends -->
                 <div class="bg-white/40 backdrop-blur-md border border-white/60 rounded-[2rem] p-6 md:p-8 flex flex-col sm:flex-row md:flex-col items-center sm:items-start md:items-center text-center sm:text-left md:text-center gap-6 hover:-translate-y-1 transition-transform duration-300 shadow-[0_8px_32px_0_rgba(225,29,72,0.05)]">
                     <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-white rounded-2xl flex items-center justify-center shadow-sm relative overflow-hidden">
                         <i class="fa-solid fa-arrow-trend-up text-2xl sm:text-3xl text-rose-500 relative z-10"></i>
@@ -222,19 +222,17 @@
                 
                 if(trendElement) {
                     setInterval(() => {
-                        // Fade out and translate down slightly
                         trendElement.style.opacity = '0';
                         trendElement.style.transform = 'translateY(5px)';
                         
                         setTimeout(() => {
-                            // Change text and fade back in
                             currentIndex = (currentIndex + 1) % trends.length;
                             trendElement.textContent = trends[currentIndex];
                             
                             trendElement.style.opacity = '1';
                             trendElement.style.transform = 'translateY(0)';
-                        }, 300); // 300ms wait matches the CSS duration
-                    }, 2500); // Loops every 2.5 seconds
+                        }, 300); 
+                    }, 2500); 
                 }
             });
         </script>
@@ -460,19 +458,60 @@
         </div>
     </section>
 
-    <footer class="py-12 bg-white/30 backdrop-blur-sm border-t border-rose-100">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-heart text-rose-500"></i>
-                <span class="text-xl font-serif font-bold text-rose-900">TrueConnex</span>
+    <!-- Enhanced Corporate Footer -->
+    <footer class="py-16 bg-white/40 backdrop-blur-md border-t border-rose-100 mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-start">
+                
+                <!-- Brand Info -->
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-heart text-rose-500 text-xl"></i>
+                        <span class="text-2xl font-serif font-bold text-rose-900">TrueConnex</span>
+                    </div>
+                    <p class="text-rose-800/60 text-sm max-w-xs leading-relaxed">
+                        Where romance feels like magic. India's premier, ID-verified private social club for intentional dating.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <h4 class="font-bold text-rose-950 uppercase tracking-widest text-xs mb-5">Explore</h4>
+                    <div class="flex flex-col gap-3 text-sm text-rose-800/70">
+                        <a href="why_us.html" class="hover:text-rose-600 transition-colors">Why Us</a>
+                        <a href="events.html" class="hover:text-rose-600 transition-colors">Exclusive Events</a>
+                        <a href="https://rzp.io/rzp/kJrq5La" class="hover:text-rose-600 transition-colors font-medium">Membership</a>
+                        <a href="https://community.trueconnex.in" class="hover:text-rose-600 transition-colors">Community & Stories</a>
+                        <a href="legal.html" class="hover:text-rose-600 transition-colors">Legal & Privacy</a>
+                    </div>
+                </div>
+
+                <!-- HQ / Address -->
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <h4 class="font-bold text-rose-950 uppercase tracking-widest text-xs mb-5">Headquarters</h4>
+                    <address class="not-italic text-sm text-rose-800/70 space-y-2">
+                        <p class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-rose-400"></i>
+                            <span>40-a, 30th Main, Near Vijaya Bank<br>Ganga Nagar, Bangalore<br>Karnataka 560032, India</span>
+                        </p>
+                        <p class="flex items-center gap-3 pt-2">
+                            <i class="fa-solid fa-phone text-rose-400"></i>
+                            <a href="tel:+917075040606" class="hover:text-rose-600 transition-colors font-medium">+917075040606</a>
+                        </p>
+                    </address>
+                </div>
+
             </div>
-             <div class="flex gap-6 text-sm text-rose-800/70">
-                <a href="why_us.html" class="hover:text-rose-600">About</a>
-                <a href="events.html" class="hover:text-rose-600">Events</a>
-                <a href="https://rzp.io/rzp/kJrq5La" class="hover:text-rose-600">Join</a>
-                <a href="legal.html" class="hover:text-rose-600">Legal</a>
-             </div>
-             <p class="text-rose-800/50 text-xs">© 2024 TrueConnex.</p>
+            
+            <!-- Copyright & Socials -->
+            <div class="mt-12 pt-8 border-t border-rose-200/50 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-rose-800/50 text-[11px] uppercase tracking-wider font-medium">© 2026 TrueConnex. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="https://instagram.com/trueconnex" target="_blank" class="w-8 h-8 rounded-full bg-rose-50 flex items-center justify-center text-rose-400 hover:text-white hover:bg-rose-500 transition-all shadow-sm">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
